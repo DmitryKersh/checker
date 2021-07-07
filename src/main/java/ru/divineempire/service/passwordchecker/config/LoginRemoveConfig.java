@@ -1,4 +1,4 @@
-package ru.divineempire.service.passwordchecker;
+package ru.divineempire.service.passwordchecker.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
