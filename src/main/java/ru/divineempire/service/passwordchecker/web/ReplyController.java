@@ -1,8 +1,9 @@
-package ru.divineempire.service.passwordchecker;
+package ru.divineempire.service.passwordchecker.web;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import ru.divineempire.service.passwordchecker.web.Reply;
 
 @RestController
 public class ReplyController {

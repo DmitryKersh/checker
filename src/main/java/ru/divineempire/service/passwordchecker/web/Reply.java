@@ -1,4 +1,4 @@
-package ru.divineempire.service.passwordchecker;
+package ru.divineempire.service.passwordchecker.web;
 
 import lombok.AccessLevel;
 import lombok.Getter;
