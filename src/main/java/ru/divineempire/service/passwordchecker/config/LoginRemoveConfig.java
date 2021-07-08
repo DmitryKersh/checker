@@ -11,3 +11,4 @@ public class LoginRemoveConfig extends WebSecurityConfigurerAdapter {
         web.ignoring().antMatchers("/**");
     }
 }
+
