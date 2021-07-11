@@ -6,5 +6,5 @@ import ru.divineempire.service.passwordchecker.entities.LoginAndPassword;
 
 @Repository
 public interface LoginAndPasswordRepository extends CrudRepository<LoginAndPassword, Long> {
-    Boolean checkLoginAndPassword(String login, String password);
+    //Boolean checkLoginAndPassword(String login, String password);
 }

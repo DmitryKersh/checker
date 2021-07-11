@@ -6,5 +6,5 @@ import ru.divineempire.service.passwordchecker.entities.Password;
 
 @Repository
 public interface PasswordRepository extends CrudRepository<Password, Long> {
-    Boolean checkPassword(String password);
+    //Boolean checkPassword(String password);
 }
