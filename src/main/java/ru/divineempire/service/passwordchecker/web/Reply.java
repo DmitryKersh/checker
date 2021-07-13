@@ -9,5 +9,8 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @RequiredArgsConstructor
 public class Reply {
-    @NonNull Boolean valid;
+    @NonNull
+    @Getter
+    private final Boolean valid;
+
 }

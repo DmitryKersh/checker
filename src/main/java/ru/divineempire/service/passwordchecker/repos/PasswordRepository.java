@@ -1,10 +1,17 @@
 package ru.divineempire.service.passwordchecker.repos;
 
+import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import ru.divineempire.service.passwordchecker.entities.Password;
 
 @Repository
 public interface PasswordRepository extends CrudRepository<Password, Long> {
-    //Boolean checkPassword(String password);
+    @Query(""" 
+            select count(password) from passwords where password = :p
+    """)
+    Integer countPasswords(
+            @Param("p") String password
+    );
 }

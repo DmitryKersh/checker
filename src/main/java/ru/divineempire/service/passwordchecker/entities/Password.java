@@ -4,12 +4,16 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
 
 
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@Table("passwords")
 public class Password {
     @Id
-    private Long id;
-    private String password;
+    Long id;
+
+    String password;
 }

@@ -18,7 +18,6 @@ import javax.sql.DataSource;
 
 @Configuration
 @PropertySource(value= {"classpath:application.properties"})
-@EnableJdbcRepositories
 public class JdbcConfig extends AbstractJdbcConfiguration {
     @Autowired
     Environment environment;
