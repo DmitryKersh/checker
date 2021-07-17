@@ -8,11 +8,13 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import ru.divineempire.service.passwordchecker.checks.LengthCheck;
 import ru.divineempire.service.passwordchecker.checks.howtocallit.BasicCheck;
 import ru.divineempire.service.passwordchecker.checks.DatabaseCheck;
 import ru.divineempire.service.passwordchecker.checks.LoginAsSubstringCheck;
 import ru.divineempire.service.passwordchecker.checks.SpecialSymbolsCheck;
 import ru.divineempire.service.passwordchecker.checks.howtocallit.CheckResult;
+import ru.divineempire.service.passwordchecker.config.custom_properties.LengthCheckProperties;
 import ru.divineempire.service.passwordchecker.repos.LoginAndPasswordRepository;
 import ru.divineempire.service.passwordchecker.repos.PasswordRepository;
 
@@ -26,6 +28,7 @@ import java.util.List;
 public class ReplyController {
     private PasswordRepository passwordRepository;
     private LoginAndPasswordRepository loginAndPasswordRepository;
+    private LengthCheckProperties lengthCheckProperties;
 
 
     @GetMapping(value = "/check", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -34,7 +37,8 @@ public class ReplyController {
         List<BasicCheck> checks = Arrays.asList(
                 new LoginAsSubstringCheck(),
                 new SpecialSymbolsCheck(),
-                new DatabaseCheck(passwordRepository, loginAndPasswordRepository)
+                new DatabaseCheck(passwordRepository, loginAndPasswordRepository),
+                new LengthCheck(lengthCheckProperties)
         );
 
         int successes = 0;
