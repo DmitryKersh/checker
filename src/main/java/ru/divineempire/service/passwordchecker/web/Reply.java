@@ -12,5 +12,4 @@ public class Reply {
     @NonNull
     @Getter
     private final Boolean valid;
-
 }

@@ -21,27 +21,26 @@ public class ReplyController {
     public Reply reply(@RequestParam("login") String login,
                        @RequestParam("password") String password) {
         if (login == null) {
-            return new Reply(passwordRepository.countPasswords(password) == 0);
-        } else {
-            return new Reply(loginAndPasswordRepository.countLoginPasswords(login, password) == 0
-                    && !login.equals(password)
-            );
+            return new Reply(passwordRepository.countPasswords(password));
         }
-         // return new Reply(true);
+
+        return new Reply(loginAndPasswordRepository.countLoginPasswords(login, password)
+                && !login.equals(password)
+        );
     }
 
     @GetMapping(value = "/checkraw")
     public String rawreply(@RequestParam("login") String login,
-                       @RequestParam("password") String password) {
-        return (loginAndPasswordRepository.countLoginPasswords(login, password) == 0
+                           @RequestParam("password") String password) {
+        return (loginAndPasswordRepository.countLoginPasswords(login, password)
                 && !login.equals(password))
                 ? "true"
                 : "false";
-        // return new Reply(true);
     }
 
     @GetMapping("/error")
-    public String error(){
+    public String error() {
         return "error";
+
     }
 }
