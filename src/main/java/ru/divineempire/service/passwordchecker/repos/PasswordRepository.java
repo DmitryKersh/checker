@@ -9,9 +9,9 @@ import ru.divineempire.service.passwordchecker.entities.Password;
 @Repository
 public interface PasswordRepository extends CrudRepository<Password, Long> {
     @Query(""" 
-            select count(password) from passwords where password = :p
+            select count(password) > 0 from passwords where password = :p
     """)
-    Integer countPasswords(
+    Boolean countPasswords(
             @Param("p") String password
     );
 }

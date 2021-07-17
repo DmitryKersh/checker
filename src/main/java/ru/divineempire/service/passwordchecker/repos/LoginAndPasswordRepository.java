@@ -9,9 +9,9 @@ import ru.divineempire.service.passwordchecker.entities.LoginAndPassword;
 @Repository
 public interface LoginAndPasswordRepository extends CrudRepository<LoginAndPassword, Long> {
     @Query(""" 
-            select count(*) from login_and_passwords where(login = :l and password = :p)
-    """)
-    Integer countLoginPasswords(
+            SELECT count(*) > 0 FROM login_and_passwords WHERE (login = :l AND password = :p)
+             """)
+    Boolean countLoginPasswords(
             @Param("l") String login,
             @Param("p") String password
     );
