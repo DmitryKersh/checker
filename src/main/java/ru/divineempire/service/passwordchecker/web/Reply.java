@@ -6,10 +6,32 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
-@FieldDefaults(level = AccessLevel.PRIVATE)
+import java.util.List;
+
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @RequiredArgsConstructor
 public class Reply {
     @NonNull
     @Getter
-    private final Boolean valid;
+    Boolean valid;
+
+    @NonNull
+    @Getter
+    Integer successes;
+
+    @NonNull
+    @Getter
+    Integer fails;
+
+    @NonNull
+    @Getter
+    List<String> successfulChecksList;
+
+    @NonNull
+    @Getter
+    List<String> failedChecksList;
+
+    @NonNull
+    @Getter
+    List<String> errorMessages;
 }

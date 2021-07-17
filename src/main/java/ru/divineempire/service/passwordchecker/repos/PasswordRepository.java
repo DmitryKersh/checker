@@ -11,7 +11,7 @@ public interface PasswordRepository extends CrudRepository<Password, Long> {
     @Query(""" 
             select count(password) = 0 from passwords where password = :p
     """)
-    Boolean countPasswords(
+    Boolean checkPassword(
             @Param("p") String password
     );
 }

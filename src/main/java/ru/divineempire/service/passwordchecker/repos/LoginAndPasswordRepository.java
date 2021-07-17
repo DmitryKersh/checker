@@ -11,7 +11,7 @@ public interface LoginAndPasswordRepository extends CrudRepository<LoginAndPassw
     @Query(""" 
             SELECT count(*) = 0 FROM login_and_passwords WHERE (login = :l AND password = :p)
              """)
-    Boolean countLoginPasswords(
+    Boolean checkLoginPassword(
             @Param("l") String login,
             @Param("p") String password
     );
