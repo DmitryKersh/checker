@@ -26,7 +26,7 @@ public class ChecksConfig {
                 new LoginAsSubstringCheck(),
                 new SpecialSymbolsCheck(),
                 new DatabaseCheck(passwordRepository, loginAndPasswordRepository),
-                new LengthCheck(lengthCheckProperties)
+                new LengthCheck(lengthCheckProperties.getMin(), lengthCheckProperties.getMax())
         );
     }
 }
