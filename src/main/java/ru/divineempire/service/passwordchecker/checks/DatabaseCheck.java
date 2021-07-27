@@ -1,6 +1,5 @@
 package ru.divineempire.service.passwordchecker.checks;
 
-import lombok.AllArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
