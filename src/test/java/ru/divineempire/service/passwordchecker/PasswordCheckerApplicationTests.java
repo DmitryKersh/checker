@@ -20,39 +20,44 @@ import ru.divineempire.service.passwordchecker.repos.PasswordRepository;
 @SpringBootTest
 class PasswordCheckerApplicationTests {
     @Autowired
-    private LoginAndPasswordRepository loginAndPasswordRepository;
+    private LoginAndPasswordRepository loginAndPasswordRepositoryMock;
 
     @Autowired
-    private PasswordRepository passwordRepository;
+    private PasswordRepository passwordRepositoryMock;
 
     @Test
     void testDatabaseCheck() {
+        // 0
+        Mockito.when(loginAndPasswordRepositoryMock
+                .checkLoginPassword(ArgumentMatchers.anyString(), ArgumentMatchers.anyString()))
+                .thenReturn(Boolean.TRUE);
+
         // 1
-        Mockito.when(loginAndPasswordRepository
+        Mockito.when(loginAndPasswordRepositoryMock
                 .checkLoginPassword(ArgumentMatchers.anyString(), ArgumentMatchers.contains("qwerty")))
                 .thenReturn(Boolean.FALSE);
 
         // 2
-        Mockito.when(loginAndPasswordRepository
+        Mockito.when(loginAndPasswordRepositoryMock
                 .checkLoginPassword(ArgumentMatchers.eq("GoodLogin"), ArgumentMatchers.anyString()))
                 .thenReturn(Boolean.TRUE);
 
         // 3
-        Mockito.when(loginAndPasswordRepository
+        Mockito.when(loginAndPasswordRepositoryMock
                 .checkLoginPassword(ArgumentMatchers.anyString(), ArgumentMatchers.eq("VerySafePassword")))
                 .thenReturn(Boolean.TRUE);
 
         // 4
-        Mockito.when(passwordRepository.checkPassword(ArgumentMatchers.anyString())).thenReturn(Boolean.TRUE);
+        Mockito.when(passwordRepositoryMock.checkPassword(ArgumentMatchers.anyString())).thenReturn(Boolean.TRUE);
 
         // 5
-        Mockito.when(passwordRepository.checkPassword(ArgumentMatchers.contains("123"))).thenReturn(Boolean.FALSE);
+        Mockito.when(passwordRepositoryMock.checkPassword(ArgumentMatchers.contains("123"))).thenReturn(Boolean.FALSE);
 
         //----------------------------------------------------------------------------------------------------
-        BasicCheck check = new DatabaseCheck(passwordRepository, loginAndPasswordRepository);
+        BasicCheck check = new DatabaseCheck(passwordRepositoryMock, loginAndPasswordRepositoryMock);
 
         Assertions.assertTrue(check.run("login", "VerySafePassword").isPassed()); // (3)
-        Assertions.assertTrue(check.run("login", "1q2w3e").isPassed());
+        Assertions.assertTrue(check.run("login", "1q2w3e").isPassed()); // (0)
         Assertions.assertTrue(check.run("GoodLogin", "qwerty").isPassed()); //(2)
 
         Assertions.assertFalse(check.run("login", "123").isPassed()); // (5)

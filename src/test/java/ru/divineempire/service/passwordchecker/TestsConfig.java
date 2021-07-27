@@ -14,13 +14,13 @@ import ru.divineempire.service.passwordchecker.web.ReplyController;
 public class TestsConfig {
     @Bean
     @Primary
-    public LoginAndPasswordRepository loginAndPasswordRepository() {
+    public LoginAndPasswordRepository loginAndPasswordRepositoryMock() {
         return Mockito.mock(LoginAndPasswordRepository.class);
     }
 
     @Bean
     @Primary
-    public PasswordRepository passwordRepository() {
+    public PasswordRepository passwordRepositoryMock() {
         return Mockito.mock(PasswordRepository.class);
     }
 }
