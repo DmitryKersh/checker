@@ -1,6 +1,5 @@
-package ru.divineempire.service.passwordchecker;
+package ru.divineempire.service.passwordchecker.tests;
 
-import org.checkerframework.checker.units.qual.A;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatchers;
@@ -18,7 +17,7 @@ import ru.divineempire.service.passwordchecker.repos.PasswordRepository;
 
 @ActiveProfiles("test")
 @SpringBootTest
-class PasswordCheckerApplicationTests {
+class ChecksTest {
     @Autowired
     private LoginAndPasswordRepository loginAndPasswordRepositoryMock;
 

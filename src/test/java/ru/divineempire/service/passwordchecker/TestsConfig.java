@@ -7,7 +7,6 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
 import ru.divineempire.service.passwordchecker.repos.LoginAndPasswordRepository;
 import ru.divineempire.service.passwordchecker.repos.PasswordRepository;
-import ru.divineempire.service.passwordchecker.web.ReplyController;
 
 @Profile("test")
 @Configuration
