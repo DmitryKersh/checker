@@ -19,7 +19,6 @@ import java.util.List;
 public class ReplyController {
     private List<BasicCheck> checksList;
 
-
     @GetMapping(value = "/check", produces = MediaType.APPLICATION_JSON_VALUE)
     public Reply reply(@RequestParam("login") String login,
                        @RequestParam("password") String password) {
