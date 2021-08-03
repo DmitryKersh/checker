@@ -2,6 +2,7 @@ package ru.divineempire.service.passwordchecker.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import ru.divineempire.service.passwordchecker.checks.DatabaseCheck;
 import ru.divineempire.service.passwordchecker.checks.LengthCheck;
 import ru.divineempire.service.passwordchecker.checks.LoginAsSubstringCheck;
@@ -16,6 +17,7 @@ import java.util.List;
 
 @Configuration
 public class ChecksConfig {
+    @Profile("prod")
     @Bean
     List<BasicCheck> checksList(
         PasswordRepository passwordRepository,
