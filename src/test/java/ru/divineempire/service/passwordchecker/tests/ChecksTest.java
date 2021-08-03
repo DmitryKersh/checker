@@ -19,11 +19,9 @@ import ru.divineempire.service.passwordchecker.repos.PasswordRepository;
 @ActiveProfiles("test")
 @SpringBootTest
 class ChecksTest {
-    @MockBean
-    private LoginAndPasswordRepository loginAndPasswordRepositoryMock;
+    private final LoginAndPasswordRepository loginAndPasswordRepositoryMock = Mockito.mock(LoginAndPasswordRepository.class);
 
-    @MockBean
-    private PasswordRepository passwordRepositoryMock;
+    private final PasswordRepository passwordRepositoryMock = Mockito.mock(PasswordRepository.class);
 
     @Test
     void testDatabaseCheck() {
