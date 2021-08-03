@@ -33,12 +33,13 @@ public class JdbcConfig extends AbstractJdbcConfiguration {
     }
 
 
-
+    @Profile("prod")
     @Bean
     NamedParameterJdbcOperations operations() {
         return new NamedParameterJdbcTemplate(postgresDataSource());
     }
 
+    @Profile("prod")
     @Bean
     PlatformTransactionManager transactionManager() {
         return new DataSourceTransactionManager(postgresDataSource());
