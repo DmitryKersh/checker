@@ -6,6 +6,7 @@ import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ActiveProfiles;
 import ru.divineempire.service.passwordchecker.checks.DatabaseCheck;
 import ru.divineempire.service.passwordchecker.checks.LengthCheck;
@@ -18,10 +19,10 @@ import ru.divineempire.service.passwordchecker.repos.PasswordRepository;
 @ActiveProfiles("test")
 @SpringBootTest
 class ChecksTest {
-    @Autowired
+    @MockBean
     private LoginAndPasswordRepository loginAndPasswordRepositoryMock;
 
-    @Autowired
+    @MockBean
     private PasswordRepository passwordRepositoryMock;
 
     @Test

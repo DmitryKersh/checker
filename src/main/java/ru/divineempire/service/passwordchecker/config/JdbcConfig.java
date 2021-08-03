@@ -30,6 +30,8 @@ public class JdbcConfig extends AbstractJdbcConfiguration {
         return dataSource;
     }
 
+
+
     @Bean
     NamedParameterJdbcOperations operations() {
         return new NamedParameterJdbcTemplate(postgresDataSource());
