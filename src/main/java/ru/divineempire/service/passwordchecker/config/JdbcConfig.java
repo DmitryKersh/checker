@@ -15,13 +15,13 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
 
+@Profile("prod")
 @Configuration
 @PropertySource(value= {"classpath:application.properties"})
 public class JdbcConfig extends AbstractJdbcConfiguration {
     @Autowired
     Environment environment;
 
-    @Profile("prod")
     @Bean
     public DataSource postgresDataSource() {
         final DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -32,14 +32,11 @@ public class JdbcConfig extends AbstractJdbcConfiguration {
         return dataSource;
     }
 
-
-    @Profile("prod")
     @Bean
     NamedParameterJdbcOperations operations() {
         return new NamedParameterJdbcTemplate(postgresDataSource());
     }
 
-    @Profile("prod")
     @Bean
     PlatformTransactionManager transactionManager() {
         return new DataSourceTransactionManager(postgresDataSource());
