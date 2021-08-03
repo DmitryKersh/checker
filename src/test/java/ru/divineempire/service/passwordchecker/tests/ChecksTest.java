@@ -17,7 +17,6 @@ import ru.divineempire.service.passwordchecker.checks.howtocallit.BasicCheck;
 import ru.divineempire.service.passwordchecker.repos.LoginAndPasswordRepository;
 import ru.divineempire.service.passwordchecker.repos.PasswordRepository;
 
-@Profile("test")
 @SpringBootTest
 class ChecksTest {
     private final LoginAndPasswordRepository loginAndPasswordRepositoryMock = Mockito.mock(LoginAndPasswordRepository.class);
