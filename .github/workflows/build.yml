@@ -60,7 +60,7 @@ jobs:
       - name: Push to Dockerhub repository
         uses: mr-smithers-excellent/docker-build-push@v4
         with:
-          image_name: dmitrykersh/checker
+          image: dmitrykersh/checker
           registry: docker.io
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
