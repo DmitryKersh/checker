@@ -57,11 +57,10 @@ jobs:
           path: |
             target/checker-*.jar
 
-      - name: Login to Dockerhub
-        run: |
-          docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
-
       - name: Push to Dockerhub repository
-        uses: devmasx/cached-docker-build-push@v0.2.2
+        uses: mr-smithers-excellent/docker-build-push@v4
         with:
           image_name: dmitrykersh/checker
+          registry: docker.io
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
