@@ -56,3 +56,11 @@ jobs:
           # TODO: specify artifact name
           path: |
             target/checker-*.jar
+
+      - name: Push to dockerhub repository
+        run: |
+          docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
+
+        uses: devmasx/cached-docker-build-push@v0.2.2
+        with:
+          image_name: dmitrykersh/checker
